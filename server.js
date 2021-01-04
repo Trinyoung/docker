@@ -1,14 +1,18 @@
 /*
  * @Author: your name
  * @Date: 2021-01-04 18:57:06
- * @LastEditTime: 2021-01-04 18:59:09
+ * @LastEditTime: 2021-01-04 19:28:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \docker\server.js
  */
-const connect = require('connect');
-const serverStatic = require('serve-static');
-const app = connect();
-app.use('/', serverStatic('.', {'index': ['index.html']}));
-app.listen(8080);
-console.log('myApp is ready at http://localhost:8080');
+const express = require('express');
+const PORT = 8080;
+const HOST = '0.0.0.0';
+const app = express;
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
